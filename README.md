@@ -2,5 +2,5 @@
 ## Authors
 
 - Michael Auger - michaelauger23@gmail.com
-- Mark - mark.andrew.auger@gmail.com
+- Mark Auger - mark.andrew.auger@gmail.com
 - Leo - leoluo92@gmail.com
