@@ -1,3 +1,6 @@
 # google-code-hash-2019
 
-- Michael Auger
+## Authors
+
+Michael Auger - michaelauger23@gmail.com
+Mark - mark.andrew.auger@gmail.com
