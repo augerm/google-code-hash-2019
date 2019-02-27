@@ -3,5 +3,5 @@
 
 - Michael Auger - michaelauger23@gmail.com
 - Mark Auger - mark.andrew.auger@gmail.com
-- Leo - leoluo92@gmail.com
-- Max - max.zinski@gmail.com
+- Leo Luo - leoluo92@gmail.com
+- Max Zinski - max.zinski@gmail.com
