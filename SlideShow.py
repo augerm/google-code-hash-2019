@@ -11,7 +11,7 @@ class SlideShow:
         slides = []
         while len(pictures_copy) != 0:
             picture = pictures_copy[0]
-            if picture.orientation == "V":
+            if picture.orientation == "H":
                 slides.append(Slide(picture))
             else:
                 best_match_index = self.get_best_vertical_match(picture, pictures_copy)
