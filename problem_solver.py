@@ -10,7 +10,9 @@ class ProblemSolver:
         self.pictures = []
         for row in rows:
             self.pictures.append(Picture(row))
-        self.slideShow =
+
+    def find_best_slide_show(self):
+        print("TODO: Implement find best slide show")
 
     def output_solution(self):
         output = []

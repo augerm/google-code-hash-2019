@@ -10,3 +10,5 @@ class SlideShow:
         for slide in self.slides:
             slide_ids.append(slide.id)
         return slide_ids
+
+    def get_score(self):
