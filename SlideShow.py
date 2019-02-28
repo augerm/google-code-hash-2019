@@ -11,5 +11,6 @@ class SlideShow:
             slide_ids.append(slide.id)
         return slide_ids
 
-    def get_score(self):
+    def get_score(self, slide_one, slide_two):
+        slide_one.get_overlap_details(slide_two)
         print("TODO: IMmplement get score")
