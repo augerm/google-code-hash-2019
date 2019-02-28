@@ -9,12 +9,16 @@ class SlideShow:
     def create_slides(self):
         pictures_copy = copy.deepcopy(self.pictures)
         slides = []
-        for picture in pictures_copy:
+        while len(pictures_copy) != 0:
+            picture = pictures_copy[0]
             if picture.orientation == "V":
                 slides.append(Slide(picture))
             else:
-                best_match = self.get_best_vertical_match(picture, pictures_copy)
-                slides.append(Slide(picture, best_match))
+                best_match_index = self.get_best_vertical_match(picture, pictures_copy)
+                if best_match_index is not None:
+                    slides.append(Slide(picture, pictures_copy[best_match_index]))
+                    del pictures_copy[best_match_index]
+            del pictures_copy[0]
         return slides
 
     def get_most_similar_arr(self, picture):
@@ -25,7 +29,13 @@ class SlideShow:
                 print("TODO: Implement later")
 
     def get_best_vertical_match(self, picture, pictures_copy):
-        return pictures_copy.pop()
+        picture_match = None
+        for i in range(len(pictures_copy) - 1):
+            if pictures_copy[i].orientation == "V":
+                picture_match = i
+        return picture_match
+
+
 
     def add_slide(self, slide):
         self.slides.append(slide)
