@@ -5,7 +5,6 @@ class SlideShow:
     def __init__(self, pictures):
         self.pictures = pictures
         self.slides = self.create_slides()
-        print(self.slides)
 
     def create_slides(self):
         pictures_copy = copy.deepcopy(self.pictures)
