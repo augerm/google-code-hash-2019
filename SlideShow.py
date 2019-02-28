@@ -2,6 +2,9 @@ class SlideShow:
     def __init__(self):
         self.slides = []
 
+    def add_slide(self, slide):
+        self.slides.append(slide)
+
     def get_num_slides(self):
         return len(self.slides)
 
@@ -11,6 +14,9 @@ class SlideShow:
             slide_ids.append(slide.id)
         return slide_ids
 
-    def get_score(self, slide_one, slide_two):
-        slide_one.get_overlap_details(slide_two)
-        print("TODO: IMmplement get score")
+    def get_score(self):
+        score = 0
+        for i in range(0, len(self.slides) - 1):
+            score += self.slides[i].get_score(self.slides[i + 1])
+        score += self.slides[len(self.slides) - 1].get_score(self.slides[0])
+        return score
