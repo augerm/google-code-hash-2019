@@ -5,7 +5,7 @@ from problem_solver import ProblemSolver
 
 # Input
 
-files = ['a_example.txt', 'b_loveley_landscapes.txt', 'c_memorable_moments.txt', 'd_pet_pictures.txt', 'e_shiny_selfies.txt']
+files = ['a_example.txt', 'b_lovely_landscapes.txt', 'c_memorable_moments.txt', 'd_pet_pictures.txt', 'e_shiny_selfies.txt']
 
 # End Input
 
@@ -29,7 +29,7 @@ big = read_file(big_file)
 bigSlicer = ProblemSolver(big['header'], big['rows'], os.path.join('output', 'big.txt'))
 bigSlicer.output_solution()
 
-biggest_file = os.path.join('data', files[3])
+biggest_file = os.path.join('data', files[4])
 biggest = read_file(biggest_file)
 biggestSlicer = ProblemSolver(biggest['header'], biggest['rows'], os.path.join('output', 'big.txt'))
 biggestSlicer.output_solution()
