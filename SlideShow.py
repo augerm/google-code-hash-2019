@@ -3,11 +3,12 @@ import copy
 class SlideShow:
     def __init__(self, pictures):
         self.pictures = pictures
-        self.slides = create_slides(pictures)
+        self.slides = self.create_slides()
+        print(self.slides)
 
     def create_slides(self):
-        pictures_copy = copy.deepcopy(pictures)
-        for picture in self.pictures:
+        pictures_copy = copy.deepcopy(self.pictures)
+        for picture in pictures_copy:
             if picture.orientation == "V":
                 self.slides.append(Slide(picture))
             else:
@@ -22,7 +23,7 @@ class SlideShow:
                 print("TODO: Implement later")
 
     def get_best_vertical_match(self, picture, pictures_copy):
-        return self.pictures_copy.pop()
+        return pictures_copy.pop()
 
     def add_slide(self, slide):
         self.slides.append(slide)
