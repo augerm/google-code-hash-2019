@@ -1,15 +1,14 @@
 class Slide:
     def __init__(self, picture_one, picture_two=None):
-        self.id = picture_one['id']
+        self.id = str(picture_one.id)
         self.pictures = [picture_one, picture_two]
         if picture_two is not None:
-            self.id += " {}".format(picture_two.id)
+            self.id += " {}".format(str(picture_two.id))
         self.tags = {}
-        for tag in picture_one['tags']:
-            print(picture_one['tags'])
+        for tag in picture_one.tags:
             self.tags[tag] = True
         if picture_two is not None:
-            for tag in picture_two['tags']:
+            for tag in picture_two.tags:
                 self.tags[tag] = True
 
     def get_num_tags(self):

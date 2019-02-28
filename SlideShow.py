@@ -1,4 +1,5 @@
 import copy
+from Slide import Slide
 
 class SlideShow:
     def __init__(self, pictures):
@@ -8,12 +9,14 @@ class SlideShow:
 
     def create_slides(self):
         pictures_copy = copy.deepcopy(self.pictures)
+        slides = []
         for picture in pictures_copy:
             if picture.orientation == "V":
-                self.slides.append(Slide(picture))
+                slides.append(Slide(picture))
             else:
                 best_match = self.get_best_vertical_match(picture, pictures_copy)
-                self.slides.append(Slide(picture, best_match))
+                slides.append(Slide(picture, best_match))
+        return slides
 
     def get_most_similar_arr(self, picture):
         for picture_comparison in self.pictures:
