@@ -11,19 +11,31 @@ class SlideShow:
         slides = []
 
         my_sorted_verticles = self.sortVerticalsByDifficulty()
-        print(my_sorted_verticles)
 
-        while len(pictures_copy) != 0:
-            picture = pictures_copy[0]
+
+        for picture in pictures_copy:
             if picture.orientation == "H":
                 slides.append(Slide(picture))
-            else:
-                best_match_index = self.get_best_vertical_match(picture, pictures_copy)
-                if best_match_index is not None:
-                    slides.append(Slide(picture, pictures_copy[best_match_index]))
-                    del pictures_copy[best_match_index]
-            del pictures_copy[0]
+
+        while len(my_sorted_verticles) != 0:
+            best_match_index = self.get_best_vertical_match(my_sorted_verticles[0][0], my_sorted_verticles)
+            if best_match_index is not None:
+                slides.append(Slide(my_sorted_verticles[0][0], my_sorted_verticles[best_match_index][0]))
+                del my_sorted_verticles[best_match_index]
+            del my_sorted_verticles[0]
         return slides
+
+    def get_best_vertical_match(self, picture, pictures_copy):
+        smallest_difficulty = 1000000000
+        smallest_difficulty_match_index = None
+
+        for i in range(len(pictures_copy)):
+            difficulty = self.get_difficulty_score(picture, pictures_copy[i][0])
+            if difficulty < smallest_difficulty:
+                smallest_difficulty = difficulty
+                smallest_difficulty_match_index = i
+
+        return smallest_difficulty_match_index
 
     def createVerticalList(self):
         pictures_copy = copy.deepcopy(self.pictures)
@@ -41,14 +53,6 @@ class SlideShow:
             else:
                 print("TODO: Implement later")
 
-    def get_best_vertical_match(self, picture, pictures_copy):
-        picture_match = None
-        for i in range(len(pictures_copy) - 1):
-            if pictures_copy[i].orientation == "V":
-                picture_match = i
-        return picture_match
-
-
 
     def sortVerticalsByDifficulty(self):
         my_verticle_slides = self.createVerticalList()
@@ -62,7 +66,7 @@ class SlideShow:
                 if first_slide.id != second_slide.id:
                     difficulty_score = self.get_difficulty_score(first_slide, second_slide)
                     total_difficulty_score += difficulty_score
-            difficulty_arr = [first_slide.id, total_difficulty_score]
+            difficulty_arr = [first_slide, total_difficulty_score]
             vertical_slides_difficulty.append(difficulty_arr)
 
         vertical_slides_difficulty.sort(reverse=False, key=self.sortCriteria)
