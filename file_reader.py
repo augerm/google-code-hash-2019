@@ -15,7 +15,7 @@ def read_file(file):
         if count == 0:
             header = int(float(line_arr[0]))
         else:
-            slide = {'orientation': line_arr[0], 'tags_length': int(float(line_arr[1])), 'tags': []}
+            slide = {'orientation': line_arr[0], 'tags_length': int(float(line_arr[1])), 'tags': [], 'id': count-1}
             for i in range(2,len(line_arr)):
                 slide['tags'].append(line_arr[i])
             rows.append(slide)
