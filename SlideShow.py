@@ -12,3 +12,4 @@ class SlideShow:
         return slide_ids
 
     def get_score(self):
+        print("TODO: IMmplement get score")
