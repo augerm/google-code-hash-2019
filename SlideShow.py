@@ -9,8 +9,16 @@ class SlideShow:
     def create_slides(self):
         pictures_copy = copy.deepcopy(self.pictures)
         slides = []
+<<<<<<< Updated upstream
         while len(pictures_copy) != 0:
             picture = pictures_copy[0]
+=======
+
+        my_sorted_verticles = self.sortVerticalsByDifficulty()
+        print(my_sorted_verticles)
+
+        for picture in pictures_copy:
+>>>>>>> Stashed changes
             if picture.orientation == "H":
                 slides.append(Slide(picture))
             else:
@@ -20,6 +28,15 @@ class SlideShow:
                     del pictures_copy[best_match_index]
             del pictures_copy[0]
         return slides
+
+    def createVerticalList(self):
+        pictures_copy = copy.deepcopy(self.pictures)
+        verticle_slides = []
+        for picture in pictures_copy:
+            if picture.orientation == 'V':
+                verticle_slides.append(picture)
+
+        return verticle_slides
 
     def get_most_similar_arr(self, picture):
         for picture_comparison in self.pictures:
@@ -36,6 +53,30 @@ class SlideShow:
         return picture_match
 
 
+
+    def sortVerticalsByDifficulty(self):
+        my_verticle_slides = self.createVerticalList()
+        vertical_slides_difficulty = []
+
+        for my_slide in my_verticle_slides:
+            total_difficulty_score = 0
+            for i in range(len(my_verticle_slides) - 1):
+                if my_slide.id != my_verticle_slides[i].id:
+                    difficulty_score = self.get_difficulty_score(my_slide, my_verticle_slides[i])
+                    total_difficulty_score += difficulty_score
+            difficulty_arr = [my_slide.id, total_difficulty_score]
+            vertical_slides_difficulty.append(difficulty_arr)
+
+        vertical_slides_difficulty.sort(reverse=True, key=self.sortCriteria(difficulty_arr))
+        return vertical_slides_difficulty
+
+    def sortCriteria(self,difficultyArr):
+        return difficultyArr[1]
+
+    def get_difficulty_score(self, slide1, slide2):
+        difficulty = slide1.get_overlap_details(slide2)
+        difficulty_score = (difficulty.different - difficulty.same) * -1
+        return difficulty_score
 
     def add_slide(self, slide):
         self.slides.append(slide)
