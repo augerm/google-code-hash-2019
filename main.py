@@ -31,7 +31,7 @@ bigSlicer.output_solution()
 
 biggest_file = os.path.join('data', files[4])
 biggest = read_file(biggest_file)
-biggestSlicer = ProblemSolver(biggest['header'], biggest['rows'], os.path.join('output', 'big.txt'))
+biggestSlicer = ProblemSolver(biggest['header'], biggest['rows'], os.path.join('output', 'biggest.txt'))
 biggestSlicer.output_solution()
 
 

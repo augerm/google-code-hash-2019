@@ -22,8 +22,8 @@ class Slide:
 
     def get_score(self, slide):
         overlap_details = self.get_overlap_details(slide)
-        same = overlap_details.same
-        min(self.get_num_tags - same, same, slide.get_num_tags - same)
+        same = overlap_details['same']
+        return min(self.get_num_tags() - same, same, slide.get_num_tags() - same)
 
     def get_overlap_details(self, other_slide):
         same_tags_count = 0

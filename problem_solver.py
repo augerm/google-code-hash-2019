@@ -12,10 +12,9 @@ class ProblemSolver:
             self.pictures.append(Picture(row))
         self.slideShow = SlideShow(self.pictures)
 
-    def find_best_slide_show(self):
-        print("TODO: Implement find best slide show")
 
     def output_solution(self):
+        print("Score: {}".format(self.slideShow.get_score()))
         output = []
         output.append(self.slideShow.get_num_slides())
         output += self.slideShow.get_slide_ids()
