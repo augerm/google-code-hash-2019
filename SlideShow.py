@@ -1,6 +1,28 @@
+import copy
+
 class SlideShow:
-    def __init__(self):
-        self.slides = []
+    def __init__(self, pictures):
+        self.pictures = pictures
+        self.slides = create_slides(pictures)
+
+    def create_slides(self):
+        pictures_copy = copy.deepcopy(pictures)
+        for picture in self.pictures:
+            if picture.orientation == "V":
+                self.slides.append(Slide(picture))
+            else:
+                best_match = self.get_best_vertical_match(picture, pictures_copy)
+                self.slides.append(Slide(picture, best_match))
+
+    def get_most_similar_arr(self, picture):
+        for picture_comparison in self.pictures:
+            if picture.id == picture_comparison.id:
+                continue
+            else:
+                print("TODO: Implement later")
+
+    def get_best_vertical_match(self, picture, pictures_copy):
+        return self.pictures_copy.pop()
 
     def add_slide(self, slide):
         self.slides.append(slide)
