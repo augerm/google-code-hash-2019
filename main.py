@@ -4,6 +4,7 @@ from file_writer import write_output
 from problem_solver import ProblemSolver
 
 # Input
+#max-test commit
 
 files = ['a_example.txt', 'b_loveley_landscapes.txt', 'c_memorable_moments.txt', 'd_pet_pictures.txt', 'e_shiny_selfies.txt']
 header_rows = ['rows', 'cols', 'minIngredients', 'maxCellsPerSlice']
